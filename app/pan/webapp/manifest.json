@@ -1,0 +1,181 @@
+{
+  "_version": "1.59.0",
+  "sap.app": {
+    "id": "pan",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.12.2",
+      "toolsId": "70f9b197-779e-4055-92f9-d52f5ace2d9f"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/catalog/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "pan-display": {
+          "semanticObject": "pan",
+          "action": "display",
+          "title": "{{flpTitle}}",
+          "subTitle": "{{flpSubtitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.120.4",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ushell": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "pan.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "tab1List",
+          "target": "tab1List"
+        },
+        {
+          "pattern": "tab1({key}):?query:",
+          "name": "tab1ObjectPage",
+          "target": "tab1ObjectPage"
+        }
+      ],
+      "targets": {
+        "tab1List": {
+          "type": "Component",
+          "id": "tab1List",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/tab1",
+              "variantManagement": "Page",
+              "navigation": {
+                "tab1": {
+                  "detail": {
+                    "route": "tab1ObjectPage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tab1ObjectPage": {
+          "type": "Component",
+          "id": "tab1ObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/tab1",
+              "controlConfiguration": {
+                "tab1topdf/@com.sap.vocabularies.UI.v1.LineItem#ATTACHMENTSINTERNALTOPANFORAPPROVERS": {
+                  "actions": {
+                    "attach": {
+                      "press": "pan.ext.controller.Draftattachment.upload",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "attach"
+                    }
+                  }
+                },
+                "tab1topdf/@com.sap.vocabularies.UI.v1.LineItem#attachments": {
+                  "actions": {
+                    "attach": {
+                      "press": "pan.ext.controller.Draftattachment.upload",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "attach"
+                    }
+                  },
+                  "tableSettings": {
+                    "selectionMode": "Multi",
+                    "type": "GridTable"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "pan"
+  }
+}
