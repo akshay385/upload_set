@@ -8,5 +8,6 @@ service CatalogService {
  entity PAYMENT_TERM_DETAILS as projection on my.PAYMENT_TERM_DETAILS;
  entity WORKFLOW_HISTORY as projection on my.WORKFLOW_HISTORY;
  entity attachments as projection on my.attachments;
+ entity Files as projection on my.Files;
 
 }

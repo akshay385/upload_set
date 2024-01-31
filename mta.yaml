@@ -68,9 +68,23 @@ modules:
       - pan.zip
       name: pan
       target-path: resources/
+    - artifacts:
+      - files.zip
+      name: files
+      target-path: resources/
 - name: pan
   type: html5
   path: app/pan
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: files
+  type: html5
+  path: app/files
   build-parameters:
     build-result: dist
     builder: custom

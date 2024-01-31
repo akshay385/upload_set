@@ -1,11 +1,18 @@
+
 const cds = require('@sap/cds');
 const{Readable }= require('stream')
 module.exports = cds.service.impl(async function () {
     let {
-        attachments,
+        attachments, Files
     } = this.entities;
 
-    this.before('CREATE', 'attachments',async (req) => {
+    this.before('CREATE', Files, req => {
+        console.log('Create called')
+        console.log(JSON.stringify(req.data))
+        req.data.url = `/attachments/Files(${req.data.ID})/content`
+    })
+
+    this.before('CREATE', attachments,async (req) => {
         debugger
         // console.log('Create called')
         // console.log(JSON.stringify(req.data))
@@ -60,7 +67,6 @@ module.exports = cds.service.impl(async function () {
             '*@odata.mediaContentType': mediaType
         }
     }
-      
 
 
 });

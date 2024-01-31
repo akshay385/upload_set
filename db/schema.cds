@@ -93,10 +93,10 @@ Vendor_Final_Quotation_Amount : String;
 //    Amount : String;
 //    Indian_Tax_PER : String;
 //    Quantity_Over_Delivery_Tolerance : String;
-justification : LargeString;
-Comments : LargeString;
-submitted_by :String;
-submitted_date :String;
+    justification : LargeString;
+    Comments : LargeString;
+    submitted_by :String;
+    submitted_date :String;
    tab1totab2 : Composition of many tab2 on tab1totab2.tab2totab1 = $self;
 //    tab1tovendor_response_summary_table : Composition of many vendor_data on tab1tovendor_response_summary_table.vendor_response_summary_tabletotab1 = $self;
 //    tab1toPAYMENT_TERM_DETAILS : Composition of many PAYMENT_TERM_DETAILS on tab1toPAYMENT_TERM_DETAILS.PAYMENT_TERM_DETAILStotab1 = $self;
@@ -247,3 +247,14 @@ entity WORKFLOW_HISTORY {
 }
 
 
+
+
+entity Files: cuid, managed{
+    @Core.MediaType: mediaType
+    content: LargeBinary;
+    @Core.IsMediaType: true
+    mediaType: String;
+    fileName: String;
+    size: Integer;
+    url: String;
+}

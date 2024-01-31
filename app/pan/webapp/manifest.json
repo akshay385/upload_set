@@ -163,6 +163,30 @@
                     "type": "GridTable"
                   }
                 }
+              },
+              "content": {
+                "body": {
+                  "sections": {
+                    "Attach": {
+                      "template": "pan.ext.fragment.Attach",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "VendorData"
+                      },
+                      "title": "attach",
+                      "type": "XMLFragment"
+                    },
+                    "Attachment": {
+                      "template": "pan.ext.fragment.Attachment",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "Attach"
+                      },
+                      "title": "attach",
+                      "type": "XMLFragment"
+                    }
+                  }
+                }
               }
             }
           }

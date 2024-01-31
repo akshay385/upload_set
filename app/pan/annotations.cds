@@ -87,12 +87,6 @@ annotate service.tab1 with @(
         },
         {
             $Type : 'UI.ReferenceFacet',
-            Label : 'attachments',
-            ID : 'attachments',
-            Target : 'tab1topdf/@UI.LineItem#attachments',
-        },
-        {
-            $Type : 'UI.ReferenceFacet',
             Label : '',
             ID : 'Justification',
             Target : '@UI.FieldGroup#Justification',
